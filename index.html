@@ -383,10 +383,23 @@
     .cd-units b{display:block;font-family:var(--font-display);font-size:1.45rem;color:#fff;font-variant-numeric:tabular-nums}
     .cd-units small{display:block;margin-top:.3rem;font-size:.64rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.75)}
     @media (max-width:480px){.promo-cd{display:block}}
+    /* First fold: start the hero right under the header (no promo bar, small top gap) */
+    .hero .container{padding-top:clamp(20px,2.4vw,36px)}
+    @media (min-width:1024px){.hero .container{align-items:start}.hero-copy{align-self:start}.hero-visual{align-self:center}}
     .hours{display:grid;grid-template-columns:auto 1fr;gap:.3rem 1rem;margin:.2rem 0;font-size:.92rem;padding:.8rem 0;border-block:1px solid var(--line)}
     .hours dt{font-weight:800;color:var(--navy)}
     .hours dd{margin:0;color:var(--muted);font-weight:600}
     .hours dd.closed{color:#b4413c}
+    /* Image sharpness: the client images are small (Dr. Kim 400x550, patient 489x525, before/after 320x238),
+       so show them at their own shape and never wider than their real size instead of stretching/cropping them. */
+    .media.media-square,.split.rev .media.media-frame{width:100%}
+    .media.media-square{max-width:320px;margin-inline:auto}
+    .media-square img{aspect-ratio:400 / 550;object-fit:cover;object-position:50% 0}
+    .ages-img{aspect-ratio:489 / 525;object-position:50% 0}
+    .split.rev .media.media-frame:not(.media-square){max-width:489px;margin-inline:auto}
+    .ba img{aspect-ratio:320 / 238}
+    @media (min-width:900px){.media.media-square,.split.rev .media.media-frame{margin-inline:auto 14px}}
+
     @media (max-width:899px){.photo-ph{padding-bottom:5.5rem}}
     .hero .fin-grid{grid-template-columns:repeat(auto-fit,minmax(min(170px,100%),1fr))}
   </style>
@@ -394,8 +407,6 @@
 <body>
 <a class="skip" href="#offer-form">Skip to consultation form</a>
 
-<!-- Promo bar -->
-<div class="promo" role="note">Grand Opening in Middletown, NY&nbsp;·&nbsp;<b>$1,000 Off Braces &amp; Invisalign</b> + Free Consultation<span class="promo-cd">&nbsp;·&nbsp;Offer ends in <b data-cd-inline>this month</b></span></div>
 
 <!-- Header -->
 <header class="header">
